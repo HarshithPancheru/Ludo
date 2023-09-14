@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST</title>
+</head>
+
+<body>
+    <canvas id="can" height="800" width="800" style="border: 2px solid red; ">
+    </canvas>
+
+
+
+
+    <script>
+        var can = document.getElementById("can");
+        var ctx = can.getContext("2d");
+        ctx.fillStyle = "blue";
+        fun1();
+        
+        function fun1(){
+           var x=0;
+           var y=0;
+           var count=0;
+            fun2();
+
+        
+
+        function fun2(){
+            ctx.clearRect(0,0,can.width,can.height);
+            ctx.fillRect(x,y,50,50);
+            x++; y++;
+            if(x==800 || y==800){
+                count++;
+                x=0;
+                y=0;
+            }
+            if(count<4)
+                requestAnimationFrame(fun2);
+            
+        }
+    }
+
+    </script>
+
+
+
+</body>
+
+</html>
