@@ -299,10 +299,10 @@ function draw_token(coordinates, color, scale = 0) {
     //token outline and white fill
     ctx.beginPath();
     ctx.strokeStyle = "black";
-    try{
-    var grd = ctx.createLinearGradient(x, y, x, y + tx);
+    try {
+        var grd = ctx.createLinearGradient(x, y, x, y + tx);
     }
-    catch (Exception){
+    catch (Exception) {
         //nothing
         console.log("hii")
     }
@@ -612,6 +612,7 @@ function animateMove(playerToMove, i, start, end) {
 
     function animateBlue() {
         scale = Math.sin((step + 1) / 20 * Math.PI);
+        step++;
         if (end == 1 && (pcoin[1] != ncoin[1] || pcoin[0] != ncoin[0])) {
             step = 0;
             scale = 0;
@@ -642,7 +643,6 @@ function animateMove(playerToMove, i, start, end) {
             pcoin[1] += ((ncoin[1] - pcoin[1] > 0) ? 1 : -1) * Math.floor(factor * scale + 1);
         else if (pcoin[0] != ncoin[0])
             pcoin[0] += ((ncoin[0] - pcoin[0] > 0) ? 1 : -1) * Math.floor(factor * scale + 1);
-        step++;
 
         if (pcoin[0] == ncoin[0] && pcoin[1] == ncoin[1] && start < end) {
             start += 1;
@@ -710,15 +710,16 @@ function animateMove(playerToMove, i, start, end) {
             }
             else if (dice_value == 6 && count_6 < 2)
                 count_6 += 1;
-            else if (dice_value == 6 && count_6 == 2) {
+            else if (dice_value == 6) {
                 count_6 = 0;
                 animateReMove(BLUE, [0, 1, 2, 3], ccoin[0], bcp);
+                player = GREEN;
             }
             else {
                 player = GREEN;
                 count_6 = 0;
 
-                bcp = ccoin[0];
+                bcp = [...ccoin[0]];
                 blue_coin = [...ccoin[1]];
                 ccoin = [[...gcp], [...green_coin]];
 
@@ -731,6 +732,7 @@ function animateMove(playerToMove, i, start, end) {
 
     function animateGreen() {
         scale = Math.sin((step + 1) / 20 * Math.PI);
+        step++;
         if (end == 1 && (pcoin[1] != ncoin[1] || pcoin[0] != ncoin[0])) {
             step = 0;
             scale = 0;
@@ -747,7 +749,6 @@ function animateMove(playerToMove, i, start, end) {
                     else
                         pcoin[0] += ((ncoin[0] - pcoin[0] > 0) ? 1 : -1);
 
-                step++;
                 if (step > 5)
                     break;
             }
@@ -829,21 +830,21 @@ function animateMove(playerToMove, i, start, end) {
             }
             else if (dice_value == 6 && count_6 < 2)
                 count_6 += 1;
-            else if (dice_value == 6 && count_6 == 2) {
+            else if (dice_value == 6) {
                 count_6 = 0;
                 animateReMove(GREEN, [0, 1, 2, 3], ccoin[0], gcp);
+                player = BLUE;
             }
             else {
                 player = BLUE;
                 count_6 = 0;
 
-                gcp = ccoin[0];
+                gcp = [...ccoin[0]];
                 green_coin = [...ccoin[1]];
                 ccoin = [[...bcp], [...blue_coin]];
             }
             show_dice();
             animating = false;
-            return;
         }
 
     }
