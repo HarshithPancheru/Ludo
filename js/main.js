@@ -616,7 +616,7 @@ function animateMove(playerToMove, i, start, end) {
         if (end == 1 && (pcoin[1] != ncoin[1] || pcoin[0] != ncoin[0])) {
             step = 0;
             scale = 0;
-            while (pcoin[1] != ncoin[1] || pcoin[0] != ncoin[0]) {
+            while ((pcoin[1] != ncoin[1] || pcoin[0] != ncoin[0]) && step < 5) {
                 var difference = (pcoin[0] - x[0]) / (ncoin[0] - x[0]) - (pcoin[1] - x[1]) / (ncoin[1] - x[1]);
                 if (difference > 0)
                     if ((ncoin[1] > pcoin[1] + factor && pcoin[1] < pcoin[1] + factor) || (ncoin[1] < pcoin[1] - factor && pcoin[1] > pcoin[1] - factor))
@@ -630,8 +630,6 @@ function animateMove(playerToMove, i, start, end) {
                         pcoin[0] += ((ncoin[0] - pcoin[0] > 0) ? 1 : -1);
 
                 step++;
-                if (step > 5)
-                    break;
             }
 
         }
@@ -705,7 +703,7 @@ function animateMove(playerToMove, i, start, end) {
 
             if (checkForKill(ccoin[1][i])) {
                 count_6 = 0;
-                bcp = ccoin[0];
+                bcp = [...ccoin[0]];
                 blue_coin = [...ccoin[1]];
             }
             else if (dice_value == 6 && count_6 < 2)
@@ -736,7 +734,7 @@ function animateMove(playerToMove, i, start, end) {
         if (end == 1 && (pcoin[1] != ncoin[1] || pcoin[0] != ncoin[0])) {
             step = 0;
             scale = 0;
-            while (pcoin[1] != ncoin[1] || pcoin[0] != ncoin[0]) {
+            while ((pcoin[1] != ncoin[1] || pcoin[0] != ncoin[0]) && step < 5) {
                 var difference = (pcoin[0] - x[0]) / (ncoin[0] - x[0]) - (pcoin[1] - x[1]) / (ncoin[1] - x[1]);
                 if (difference > 0)
                     if ((ncoin[1] > pcoin[1] + factor && pcoin[1] < pcoin[1] + factor) || (ncoin[1] < pcoin[1] - factor && pcoin[1] > pcoin[1] - factor))
@@ -748,9 +746,6 @@ function animateMove(playerToMove, i, start, end) {
                         pcoin[0] += ((ncoin[0] - pcoin[0] > 0) ? 1 : -1) * Math.floor(factor);
                     else
                         pcoin[0] += ((ncoin[0] - pcoin[0] > 0) ? 1 : -1);
-
-                if (step > 5)
-                    break;
             }
 
         }
@@ -825,7 +820,7 @@ function animateMove(playerToMove, i, start, end) {
 
             if (checkForKill(ccoin[1][i])) {
                 count_6 = 0;
-                gcp = ccoin[0];
+                gcp = [...ccoin[0]];
                 green_coin = [...ccoin[1]];
             }
             else if (dice_value == 6 && count_6 < 2)
@@ -889,7 +884,27 @@ function animateReMove(playerToMove, coins, starts, ends, killed = false) {
 
         function animateBlue() {
             animating = true;
-            if (pcoin[0] != ncoin[0] && pcoin[1] != ncoin[1]) {
+            if (star == 0 && (pcoin[1] != ncoin[1] || pcoin[0] != ncoin[0])) {
+                step = 0;
+                scale = 0;
+                while ((pcoin[1] != ncoin[1] || pcoin[0] != ncoin[0]) && step > 5) {
+                    var difference = (pcoin[0] - x[0]) / (ncoin[0] - x[0]) - (pcoin[1] - x[1]) / (ncoin[1] - x[1]);
+                    if (difference > 0)
+                        if ((ncoin[1] > pcoin[1] + factor && pcoin[1] < pcoin[1] + factor) || (ncoin[1] < pcoin[1] - factor && pcoin[1] > pcoin[1] - factor))
+                            pcoin[1] += ((ncoin[1] - pcoin[1] > 0) ? 1 : -1) * Math.floor(factor);
+                        else
+                            pcoin[1] += ((ncoin[1] - pcoin[1] > 0) ? 1 : -1);
+                    else
+                        if ((ncoin[0] > pcoin[0] + factor && pcoin[0] < pcoin[0] + factor) || (ncoin[0] < pcoin[0] - factor && pcoin[0] > pcoin[0] - factor))
+                            pcoin[0] += ((ncoin[0] - pcoin[0] > 0) ? 1 : -1) * Math.floor(factor);
+                        else
+                            pcoin[0] += ((ncoin[0] - pcoin[0] > 0) ? 1 : -1);
+    
+                    step++;
+                }
+    
+            }
+            else if (pcoin[0] != ncoin[0] && pcoin[1] != ncoin[1]) {
                 pcoin[0] += ((ncoin[0] - pcoin[0] > 0) ? 1 : -1);
                 pcoin[1] += ((ncoin[1] - pcoin[1] > 0) ? 1 : -1);
             }
@@ -1023,7 +1038,27 @@ function animateReMove(playerToMove, coins, starts, ends, killed = false) {
 
         function animateGreen() {
             animating = true;
-            if (start == 0 && (pcoin[1] != ncoin[1] || pcoin[0] != ncoin[0])) {
+            if (star == 0 && (pcoin[1] != ncoin[1] || pcoin[0] != ncoin[0])) {
+                step = 0;
+                scale = 0;
+                while ((pcoin[1] != ncoin[1] || pcoin[0] != ncoin[0]) && step > 5) {
+                    var difference = (pcoin[0] - x[0]) / (ncoin[0] - x[0]) - (pcoin[1] - x[1]) / (ncoin[1] - x[1]);
+                    if (difference > 0)
+                        if ((ncoin[1] > pcoin[1] + factor && pcoin[1] < pcoin[1] + factor) || (ncoin[1] < pcoin[1] - factor && pcoin[1] > pcoin[1] - factor))
+                            pcoin[1] += ((ncoin[1] - pcoin[1] > 0) ? 1 : -1) * Math.floor(factor);
+                        else
+                            pcoin[1] += ((ncoin[1] - pcoin[1] > 0) ? 1 : -1);
+                    else
+                        if ((ncoin[0] > pcoin[0] + factor && pcoin[0] < pcoin[0] + factor) || (ncoin[0] < pcoin[0] - factor && pcoin[0] > pcoin[0] - factor))
+                            pcoin[0] += ((ncoin[0] - pcoin[0] > 0) ? 1 : -1) * Math.floor(factor);
+                        else
+                            pcoin[0] += ((ncoin[0] - pcoin[0] > 0) ? 1 : -1);
+    
+                    step++;
+                }
+    
+            }
+            else if (start == 0 && (pcoin[1] != ncoin[1] || pcoin[0] != ncoin[0])) {
                 step = 0;
                 while (pcoin[1] != ncoin[1] || pcoin[0] != ncoin[0]) {
                     var difference = (pcoin[0] - x[0]) / (ncoin[0] - x[0]) - (pcoin[1] - x[1]) / (ncoin[1] - x[1]);
