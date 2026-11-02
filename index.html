@@ -5,22 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUDO</title>
+    <style>
+        .dice {
+            display: inline-flex;
+            height: fit-content;
+            width: fit-content;
+        }
+
+        #diceBack1,
+        #diceBack2,
+        #diceBack3,
+        #diceBack4 {
+            position: absolute;
+            z-index: -1;
+        }
+    </style>
 </head>
 
 <body>
-
-    <canvas id="dice1" width="80" height="80"></canvas>
+    <div class="dice">
+        <canvas id="dice1" width="80" height="80"></canvas>
+        <canvas id="diceBack1" width="80" height="80"></canvas>
+    </div>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <canvas id="dice2" width="80" height="80"></canvas><br>
+    <div class="dice">
+        <canvas id="dice2" width="80" height="80"></canvas>
+        <canvas id="diceBack2" width="80" height="80"></canvas>
+    </div><br>
     <canvas id="board" width="600" height="600">
     </canvas><br>
-    <canvas id="dice3" width="80" height="80"></canvas>
+    <div class="dice">
+        <canvas id="dice3" width="80" height="80"></canvas>
+        <canvas id="diceBack3" width="80" height="80"></canvas>
+    </div>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <canvas id="dice4" width="80" height="80"></canvas>
+    <div class="dice">
+        <canvas id="dice4" width="80" height="80"></canvas>
+        <canvas id="diceBack4" width="80" height="80"></canvas>
+    </div>
     <br><br><br><br>
 
-    <script type="text/javascript" src="js/main.js">
-
+    <script type="text/javascript" src="main.js">
     </script>
 </body>
 
